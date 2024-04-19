@@ -39,7 +39,6 @@ app.post("/", function (req, res) {
 
   axios.post("https://us18.api.mailchimp.com/3.0/lists/98ed368e63", data, options)
     .then(function (response) {
-      console.log("Status Code: " + response.status);
       if (response.status === 200) {
         res.sendFile(__dirname + "/success.html");
       } else {
@@ -55,7 +54,7 @@ app.post("/failure", function(req,res){
   res.redirect("/");
 })
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server Started at port 3000");
 });
 
